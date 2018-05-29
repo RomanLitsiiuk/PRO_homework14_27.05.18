@@ -1,0 +1,9 @@
+h1 {
+  font-size: 25px;
+  color: aqua;
+}
+@media screen and (max-width: 960px) {
+  h1 {
+    color: salmon;
+  }
+}
