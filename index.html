@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <title>My own slider</title>
   <link rel="stylesheet" type="text/css" href="dist/css/styles.css">
-  <script src="src/js/main.js" defer></script>
+  <!--<script src="src/js/main.js" defer></script>-->
+  <script src="src/js/main2.js" defer></script>
 </head>
 <body>
   <div class="Container">
     <h1 class="Header">Hello, slider!</h1>
-    <div class="Slider" id="slider">
-      <button class="Slider-arrowBack">⇦</button>
+    <div class="Slider u-padding" id="slider">
+      <button class="Slider-arrow Slider-arrow--back">⇦</button>
       <div class="Gallery">
         <ul class="Gallery-line">
           <li class="Gallery-slide">
@@ -30,7 +31,30 @@
           </li>
         </ul>
       </div>
-      <button class="Slider-arrowNext">⇨</button>
+      <button class="Slider-arrow Slider-arrow--next">⇨</button>
+    </div>
+    <div class="Slider u-padding" id="slider2">
+      <button class="Slider-arrow Slider-arrow--back">⇦</button>
+      <div class="Gallery">
+        <ul class="Gallery-line">
+          <li class="Gallery-slide">
+            <img src="src/images/First.jpg" alt="first slide">
+          </li>
+          <li class="Gallery-slide">
+            <img src="src/images/Second.jpg" alt="second slide">
+          </li>
+          <li class="Gallery-slide">
+            <img src="src/images/Third.jpg" alt="third slide">
+          </li>
+          <li class="Gallery-slide">
+            <img src="src/images/Fourth.jpg" alt="fourth slide">
+          </li>
+          <li class="Gallery-slide">
+            <img src="src/images/Fifth.jpg" alt="fifth slide">
+          </li>
+        </ul>
+      </div>
+      <button class="Slider-arrow Slider-arrow--next">⇨</button>
     </div>
   </div>
 </body>

@@ -110,8 +110,9 @@ body {
   border: 1px solid #CCC;
   background: #eee;
   box-sizing: border-box;
+  margin-bottom: 30px;
 }
-.Slider-arrowBack {
+.Slider-arrow {
   position: absolute;
   top: 240px;
   padding: 0;
@@ -122,20 +123,12 @@ body {
   line-height: 24px;
   color: #444;
   display: block;
-  left: 7px;
 }
-.Slider-arrowNext {
-  position: absolute;
-  top: 240px;
-  padding: 0;
-  background: #ddd;
-  border-radius: 15px;
-  border: 1px solid gray;
-  font-size: 24px;
-  line-height: 24px;
-  color: #444;
-  display: block;
+.Slider-arrow--next {
   right: 7px;
+}
+.Slider-arrow--back {
+  left: 7px;
 }
 .Gallery {
   width: 100%;
@@ -146,14 +139,15 @@ body {
   width: 9999px;
   margin: 0;
   padding: 0;
-  /*transition: margin-left 250ms;*/
+  list-style: none;
+  transition: margin-left 250ms;
+  font-size: 0;
   display: flex;
 }
 .Gallery-slide {
   width: 858px;
   height: 480px;
   text-align: center;
-  padding: 0 10px;
 }
 .Gallery-slide img {
   width: 100%;
