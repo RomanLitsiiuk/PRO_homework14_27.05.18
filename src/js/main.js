@@ -1,27 +1,50 @@
 window.onload = function () {
-  var SliderLine = document.getElementsByTagName('li');
-  for (var i = 0; i < SliderLine.length; i++) {
-    SliderLine[i].style.position = 'relative';
-    var span = document.createElement('span');
-    span.style.cssText = 'position:absolute;left:0;top:0';
-    span.innerHTML = i + 1;
-    SliderLine[i].appendChild(span);
-  }
-
-  var slideWidth = 858;
-  var slideCount = 1;
-  var Slider = document.getElementById('slider');
-  var list = Slider.querySelector('ul');
-  var listElems = Slider.querySelectorAll('li');
-  var position = 0;
-  
-  Slider.querySelector('.Slider-arrow--back').onclick = function() {
-    position = Math.min(position + slideWidth * slideCount, 0);
-    list.style.marginLeft = position + 'px';
+  var Slider = function(rootElement, slideCount, slideScroll) {
+    this.rootElement = rootElement;
+    this.list = this.rootElement.querySelector('.Gallery-line');
+    this.slides = this.list.getElementsByTagName('li');
+    this.leftArrow = this.rootElement.querySelector('.Slider-arrow--back');
+    this.rightArrow = this.rootElement.querySelector('.Slider-arrow--next');
+    this.SlideNumber = this.slides.length;
+    this.slide = this.slides[0];
+    this.slideWidth = this.slide.offsetWidth;
+    this.slideHeight = this.slide.offsetHeight;
+    this.sliderCount = slideCount;
+    this.slideScroll = slideScroll;
+    this.next = this.next.bind(this);
+    this.back = this.back.bind(this);
+    this.position = 0;
   };
   
-  Slider.querySelector('.Slider-arrow--next').onclick = function() {
-    position = Math.max(position - slideWidth * slideCount, -slideWidth * (listElems.length - slideCount));
-    list.style.marginLeft = position + 'px';
+  Slider.prototype.size = function () {
+    for (var i = 0; i < this.SlideNumber; i++) {
+      this.slides[i].style.width = this.slideWidth / this.sliderCount + 'px';
+      this.slides[i].style.height = this.slideHeight / this.sliderCount + 'px';
+    }
+    this.leftArrow.style.top = ((this.slideHeight / this.sliderCount) / 2) - 30 + 'px';
+    this.rightArrow.style.top = ((this.slideHeight / this.sliderCount) / 2) - 30 + 'px';
   };
+  
+  Slider.prototype.back = function() {
+    this.slideCalcWidth = this.slideWidth / this.sliderCount;
+    this.position = Math.min(this.position + this.slideCalcWidth * this.slideScroll, 0);
+    this.list.style.marginLeft = this.position + 'px';
+  };
+  
+  Slider.prototype.next = function() {
+    this.slideCalcWidth = this.slideWidth / this.sliderCount;
+    this.position = Math.max(this.position - this.slideCalcWidth * this.slideScroll, -this.slideCalcWidth * (this.SlideNumber - this.sliderCount));
+    this.list.style.marginLeft = this.position + 'px';
+  };
+  
+  Slider.prototype.render = function(){
+    this.size();
+    this.rightArrow.addEventListener("click", this.next);
+    this.leftArrow.addEventListener("click", this.back);
+  };
+  
+  var slider = new Slider(document.getElementById('slider'), 1, 1).render();
+  var slider2 = new Slider(document.getElementById('slider2'), 2, 2).render();
+  var slider3 = new Slider(document.getElementById('slider3'), 3, 1).render();
 };
+

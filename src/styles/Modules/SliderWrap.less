@@ -8,16 +8,24 @@
   margin-bottom: 30px;
 
   &-arrow {
+    width: 35px;
+    height: 80px;
     position: absolute;
     top: 240px;
     padding: 0;
-    background: #ddd;
+    background: #CACBD5;
     border-radius: 15px;
-    border: 1px solid gray;
+    border: 1px solid #666F89;
+    box-shadow: 0 0 5px 0 rgba(102, 111, 137, 0.7);
     font-size: 24px;
     line-height: 24px;
-    color: #444;
+    color: #666F89;
     display: block;
+
+    &:active {
+      box-shadow:0 0 5px rgba(213, 94, 45, 0.5) inset;
+      color: rgba(213, 94, 45, 0.5);
+    }
 
     &--next {
       right: 7px;

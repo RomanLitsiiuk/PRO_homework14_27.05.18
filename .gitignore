@@ -1,6 +1,5 @@
 /.idea
 /node_modules
-/src/js/main.js
-/src/js/main3.js
+/black
 package-lock.json
 .gitignore
